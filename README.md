@@ -11,6 +11,8 @@ of range or turned off.
 It requires the [EV3 UART Sensor Modules] in order to communicate with the
 sensor.
 
+[![ScreenShot](http://img.youtube.com/vi/ffRR2iqlgv8/0.jpg)](http://youtu.be/ffRR2iqlgv8)
+
 Compiling
 ---------
 
