@@ -1,4 +1,4 @@
-// Copyright (c) 2014 David Lechner
+// Copyright (c) 2014-2015 David Lechner
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -22,8 +22,8 @@ using Gtk;
 
 namespace EV3IREyes {
 	public class MainWindow : Window {
-		const string msensor_class_path = "/sys/class/msensor";
-		const string IR_SENSOR_TYPE_ID = "33";
+		const string lego_sensor_class_path = "/sys/class/lego-sensor";
+		const string IR_SENSOR_DRIVER_NAME = "ev3-uart-33";
 		const string IR_SEEK_MODE = "IR-SEEK";
 
 		string heading_path;
@@ -46,15 +46,15 @@ namespace EV3IREyes {
 			proximity_label = new Label ("???");
 			box.pack_start (proximity_label, false);
 			try {
-				var msensor_dir = Dir.open (msensor_class_path, 0);
+				var lego_sensor_dir = Dir.open (lego_sensor_class_path, 0);
 				string? sensor_dir_name = null;
-				while ((sensor_dir_name = msensor_dir.read_name ()) != null) {
-					var sensor_path = Path.build_filename (msensor_class_path, sensor_dir_name);
-					var type_id_path = Path.build_filename (sensor_path, "type_id");
-					string type_id;
-					FileUtils.get_contents (type_id_path, out type_id);
-					type_id = type_id.strip ();
-					if (type_id != IR_SENSOR_TYPE_ID)
+				while ((sensor_dir_name = lego_sensor_dir.read_name ()) != null) {
+					var sensor_path = Path.build_filename (lego_sensor_class_path, sensor_dir_name);
+					var driver_name_path = Path.build_filename (sensor_path, "driver_name");
+					string driver_name;
+					FileUtils.get_contents (driver_name_path, out driver_name);
+					driver_name = driver_name.strip ();
+					if (driver_name != IR_SENSOR_DRIVER_NAME)
 						continue;
 					var mode_path = Path.build_filename (sensor_path, "mode");
 					if (!FileUtils.test (mode_path, FileTest.EXISTS))

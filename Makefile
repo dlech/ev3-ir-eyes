@@ -28,7 +28,7 @@ SOURCE_FILES := \
 all: $(EXECUTABLE)
 
 $(EXECUTABLE): $(SOURCE_FILES)
-	valac --pkg=gtk+-3.0 --pkg=cairo --output=$@ $^
+	valac --pkg=gtk+-3.0 --pkg=cairo --output=$@ -X -w $^
 
 clean:
 	rm -f $(EXECUTABLE)

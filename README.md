@@ -8,14 +8,29 @@ The sensor looks for the IR beacon and when it sees it, the eyes open. The
 eyes will follow the beacon left and right and close when the beacon is out
 of range or turned off.
 
-It requires the [EV3 UART Sensor Modules] in order to communicate with the
+It requires the [ev3dev driver DKMS] (v2.0) in order to communicate with the
 sensor.
 
 Compiling
 ---------
 
-Required packages:
-valac libgtk-3-dev libcairo2-dev
+Install required packages:
 
+    sudo apt-get install valac libgtk-3-dev libcairo2-dev
 
-[EV3 UART Sensor Modules]: https://github.com/ev3dev/legoev3-uart-sensor-modules
+Then just run `make`.
+
+Running
+-------
+
+You must be a member of the `ev3dev` group.
+
+    sudo usermod -aG ev3dev <username>
+
+You must log out and log back in for this to take effect.
+
+Then run:
+
+    ./ev3-ir-eyes
+
+[ev3dev driver DKMS]: https://github.com/ev3dev/lego-linux-drivers-dkms
