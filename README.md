@@ -8,7 +8,7 @@ The sensor looks for the IR beacon and when it sees it, the eyes open. The
 eyes will follow the beacon left and right and close when the beacon is out
 of range or turned off.
 
-It requires the [ev3dev driver DKMS] (v2.0) in order to communicate with the
+It requires the [ev3dev driver DKMS] \(v2.0) in order to communicate with the
 sensor.
 
 [![ScreenShot](http://img.youtube.com/vi/ffRR2iqlgv8/0.jpg)](http://youtu.be/ffRR2iqlgv8)
